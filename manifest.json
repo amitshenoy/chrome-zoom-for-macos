@@ -1,0 +1,49 @@
+{
+  "action": {
+    "default_icon": {
+      "128": "icons/icon128.png",
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png"
+    },
+    "default_popup": "popup.html",
+    "default_title": "Chrome zoom for MacOS"
+  },
+  "author": "Amit Shenoy",
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "all_frames": true,
+      "js": [
+        "content.js"
+      ],
+      "matches": [
+        "<all_urls>"
+      ],
+      "run_at": "document_start"
+    }
+  ],
+  "description": "Hold Control, Option or Command and scroll to zoom, like Windows Ctrl+Scroll. One notch = one Chrome zoom step - no runaway zoom.",
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "icons": {
+    "128": "icons/icon128.png",
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png"
+  },
+  "manifest_version": 3,
+  "minimum_chrome_version": "116",
+  "name": "Chrome zoom for MacOS",
+  "options_page": "options.html",
+  "permissions": [
+    "tabs",
+    "storage"
+  ],
+  "short_name": "Zoom for MacOS",
+  "version": "1.0.0"
+}

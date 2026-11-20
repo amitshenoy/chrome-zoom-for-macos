@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header>
+    <img src="icons/icon48.png" alt="" width="24" height="24">
+    <h1>Chrome zoom for MacOS</h1>
+  </header>
+
+  <div class="zoom-row">
+    <button id="zoom-out" title="Zoom out (one Chrome level)">−</button>
+    <button id="zoom-level" title="Reset to 100%">100%</button>
+    <button id="zoom-in" title="Zoom in (one Chrome level)">+</button>
+  </div>
+
+  <label class="switch-row">
+    <span>Enable scroll zoom</span>
+    <input type="checkbox" id="enabled" checked>
+  </label>
+
+  <fieldset>
+    <legend>Zoom hotkey — hold it and scroll</legend>
+    <label><input type="radio" name="hotkey" value="control"> Control <span class="hint">(Windows-style)</span></label>
+    <label><input type="radio" name="hotkey" value="alt"> Option (⌥)</label>
+    <label><input type="radio" name="hotkey" value="meta"> Command (⌘)</label>
+  </fieldset>
+
+  <p class="note">One scroll notch = one zoom step, exactly like Cmd+.
+  Fast spins won't run away — steps are rate-limited.</p>
+
+  <p class="note dim">Doesn't run on chrome:// pages or the Web Store (Chrome blocks extensions there).</p>
+
+  <script src="popup.js"></script>
+</body>
+</html>

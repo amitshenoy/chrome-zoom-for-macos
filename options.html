@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Chrome zoom for MacOS — Settings</title>
+<link rel="stylesheet" href="popup.css">
+<style> body { width: auto; max-width: 560px; margin: 24px auto; padding: 0 20px; font-size: 14px; } </style>
+</head>
+<body>
+  <header>
+    <img src="icons/icon48.png" alt="" width="24" height="24">
+    <h1>Chrome zoom for MacOS — Settings</h1>
+  </header>
+
+  <label class="switch-row">
+    <span>Enable scroll zoom</span>
+    <input type="checkbox" id="enabled" checked>
+  </label>
+
+  <fieldset>
+    <legend>Zoom hotkey — hold it and scroll</legend>
+    <label><input type="radio" name="hotkey" value="control"> Control <span class="hint">— the Windows Ctrl+Scroll behaviour</span></label>
+    <label><input type="radio" name="hotkey" value="alt"> Option (⌥)</label>
+    <label><input type="radio" name="hotkey" value="meta"> Command (⌘)</label>
+  </fieldset>
+
+  <h2 style="font-size:14px">How sensitivity works</h2>
+  <p>Each step moves exactly one of Chrome's own zoom levels — the same
+  levels Cmd+ and Cmd- cycle through (… 90% → 100% → 110% → 125% → 150% …).
+  There is no smooth/continuous zoom.</p>
+  <p>A scroll wheel fires many events (a trackpad flick can fire dozens,
+  with momentum after your fingers lift). To stop one flick zooming many
+  levels deep:</p>
+  <ul>
+    <li>Scroll deltas must add up to a threshold (≈ half a mouse notch) before a step fires — one notch = one step.</li>
+    <li>After each step there's a 140&nbsp;ms cooldown where further scrolling is swallowed, so momentum dies instead of stacking steps.</li>
+    <li>The partial scroll amount resets after 100&nbsp;ms of quiet, so slow separate ticks never combine into a surprise zoom.</li>
+  </ul>
+
+  <h2 style="font-size:14px">Notes</h2>
+  <ul>
+    <li>Hold only the chosen hotkey — holding a second modifier (e.g. Cmd+Control together) won't trigger zoom, to avoid clashing with other shortcuts.</li>
+    <li>Shift may be held or not; it doesn't affect zooming.</li>
+    <li>Zoom is per-tab and uses Chrome's built-in zoom, so the % shown in Chrome's menu matches, and pages remember their zoom the usual Chrome way.</li>
+    <li>Chrome blocks all extensions on chrome:// pages, the New Tab page's built-in content, and the Chrome Web Store — scroll zoom can't work there. Every regular website works.</li>
+    <li>If you pick Control, trackpad pinch-to-zoom gestures (which Chrome reports as Control+scroll) will also step the zoom — consistent with Windows behaviour.</li>
+  </ul>
+
+  <script src="options.js"></script>
+</body>
+</html>

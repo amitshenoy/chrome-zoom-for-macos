@@ -1,0 +1,1 @@
+{"description":"Dev metadata only (Chrome ignores this file) — enables Node ESM for tests.","name":"chrome-zoom-for-macos","private":true,"scripts":{"test":"node --test tests/zoom-logic.test.js"},"type":"module","version":"1.0.0"}
